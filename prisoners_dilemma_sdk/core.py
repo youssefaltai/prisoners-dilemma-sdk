@@ -1,24 +1,44 @@
-import json
+"""
+Core classes and functions for the Prisoner's Dilemma game.
+"""
+
 from abc import ABC, abstractmethod
+from typing import List
 
 
 class GameState:
-    round_number: int
-    player1_history: list[bool]
-    player2_history: list[bool]
+    """
+    Represents the state of the game.
+    """
 
-    def __init__(self, game_state_json: str):
-        decoded_json = json.loads(game_state_json)
-        self.round_number = decoded_json["round_number"]
-        self.player1_history = decoded_json["player1_history"]
-        self.player2_history = decoded_json["player2_history"]
+    def __init__(
+        self,
+        round_number: int,
+        player1_history: List[bool],
+        player2_history: List[bool]
+    ):
+        """
+        Initialize the game state.
+
+        :param round_number: The current round number.
+        :param player1_history: History of decisions made by player 1.
+        :param player2_history: History of decisions made by player 2.
+        """
+        self.round_number = round_number
+        self.player1_history = player1_history
+        self.player2_history = player2_history
 
 
 class PrisonersDilemmaStrategy(ABC):
+    """
+    Abstract base class for strategies in the Prisoner's Dilemma game.
+    """
+
     @abstractmethod
     def cooperate(self, game_state: GameState) -> bool:
         """
         Decide whether to cooperate or defect in the next round.
+
         :param game_state: The current game state.
         :return: True to cooperate, False to defect.
         """
