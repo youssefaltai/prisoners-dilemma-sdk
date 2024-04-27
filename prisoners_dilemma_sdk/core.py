@@ -12,5 +12,5 @@ class GameState:
 
 class PrisonersDilemmaStrategy(ABC):
     @abstractmethod
-    def make_decision(self, game_state: GameState):
-        ...
+    def make_decision(self, game_state: GameState) -> bool:
+        pass
