@@ -13,4 +13,9 @@ class GameState:
 class PrisonersDilemmaStrategy(ABC):
     @abstractmethod
     def make_decision(self, game_state: GameState) -> bool:
+        """
+        Make a decision based on the current game state.
+        :param game_state: The current game state.
+        :return: True to cooperate, False to defect.
+        """
         pass
