@@ -1,4 +1,5 @@
 import json
+from abc import abstractmethod
 
 
 class GameState:
@@ -8,3 +9,8 @@ class GameState:
         self.player1_history = decoded_json['player1_history']
         self.player2_history = decoded_json['player2_history']
 
+
+class PrisonersDilemmaSDK:
+    @abstractmethod
+    def make_decision(self, game_state: GameState):
+        ...
